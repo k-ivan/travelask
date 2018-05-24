@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./css/app.css">
+  <title>Document</title>
+</head>
+<body>
+    <div class="chat" id="chat">
+      <div class="chatbox">
+        <div class="chatbox__header">
+          <div class="chatbox__inline">
+            <div class="chatbox__user">
+              <img class="chatbox__ava" src="http://i.pravatar.cc/50?img=27">
+              <div class="chatbox__info">
+                <div class="chatbox__name">Токсикова Ольга</div>
+                <div class="chatbox__city">Днепропетровск</div>
+              </div>
+            </div>
+            <div class="chatbox__actions">
+              <div class="chatbox__rating">
+                <div class="rating">
+                  <label class="rating__star" title="5 star">
+                    <input class="rating__check" type="radio" name="rating" value="5">
+                  </label>
+                  <label class="rating__star" title="4 stars">
+                    <input class="rating__check" type="radio" name="rating" value="4">
+                  </label>
+                  <label class="rating__star" title="3 stars">
+                    <input class="rating__check" type="radio" name="rating" value="3">
+                  </label>
+                  <label class="rating__star" title="2 stars">
+                    <input class="rating__check" type="radio" name="rating" value="2">
+                  </label>
+                  <label class="rating__star  rating__star--checked" title="1 stars">
+                    <input class="rating__check" type="radio" name="rating" value="1" checked>
+                  </label>
+                </div>
+                <button class="chatbox__close">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M15 9l-6 6M9 9l6 6"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="chatbox__body" ref="body">
+          <ul class="chatbox__list">
+            <li class="chatbox__item" v-for="(comment, idx) in comments" :key="idx">
+                <img class="chatbox__ava chatbox__ava--sm" :src="comment.image">
+                <div class="chatbox__message">{{ comment.msg }}</div>
+            </li>
+              <!-- <img class="chatbox__ava chatbox__ava--sm" src="http://i.pravatar.cc/50?img=27">
+              <div class="chatbox__message">Где взять на прокат вечернее красивое платье? А еще лучше дизайнерское! Предстоит участие в мероприятии, где все гости будут наверняка одеты в наряды "от кутюр", а у меня со средствами туговато, да и жалко на один раз такие деньжищи отваливать. Мне бы салон найти, где на прокат можно такой наряд взять. Поделитесь, пожалуйста, советами.</div>
+              <time class="chatbox__date" datetime="">вчера в 17.45</time>
+            </li>
+            <li class="chatbox__item">
+              <img class="chatbox__ava chatbox__ava--sm" src="http://i.pravatar.cc/50?img=28">
+              <div class="chatbox__message">Поисковик вам в помощь! Но цена примерно в половину стоимости платья.</div>
+              <time class="chatbox__date" datetime="">вчера в 17.45</time>
+            </li>
+            <li class="chatbox__item">
+              <img class="chatbox__ava chatbox__ava--sm" src="http://i.pravatar.cc/50?img=27">
+              <div class="chatbox__message">Где взять на прокат вечернее красивое платье? А еще лучше дизайнерское! Предстоит участие в мероприятии, где все гости будут наверняка одеты в наряды "от кутюр", а у меня со средствами туговато</div>
+              <time class="chatbox__date" datetime="">вчера в 17.45</time>
+            </li>
+            <li class="chatbox__item">
+              <img class="chatbox__ava chatbox__ava--sm" src="http://i.pravatar.cc/50?img=28">
+              <div class="chatbox__message">
+                Поисковик вам в помощь! Но цена примерно в половину стоимости платья.
+              </div>
+              <time class="chatbox__date" datetime="">вчера в 17.45</time> -->
+            </li>
+          </ul>
+        </div>
+        <div class="chatbox__footer">
+          <div class="chatbox__inline">
+            <img class="chatbox__ava" src="http://i.pravatar.cc/50?img=28">
+            <form action="#0" class="chatbox__form" @submit.prevent="submitHandler">
+              <textarea class="chatbox__text" v-model.trim="message" ref="textarea" placeholder="Message" @input="stretch" @change="stretch"></textarea>
+              <button>Отправить</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script> -->
+   <script src="js/app.js"></script>
+</body>
+</html>

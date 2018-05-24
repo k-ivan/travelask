@@ -1,0 +1,245 @@
+html {
+  font-size: 16px;
+  box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+@font-face {
+  font-family: 'PT Sans';
+  src: local('PT Sans Bold'), local('PTSans-Bold'), url('../fonts/ptsansbold.woff2') format('woff2'), url('../fonts/ptsansbold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+
+body {
+  margin: 0;
+  font-family: $font-sans;
+  font-size: $font-size-root;
+  color: $body-color;
+  background: $body-bg;
+}
+
+.chat {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  padding: 20px;
+}
+
+.chatbox {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  min-height: 250px;
+  height: 100%;
+  max-height: 550px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-shadow: 0  1px 16px 2px rgba(#34383f, 0.46);
+  overflow: hidden;
+
+  &__inline {
+    display: flex;
+  }
+
+  &__header {
+    position: relative;
+    padding: 30px 30px 15px;
+    border-bottom: 1px solid #ebebeb;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 11px;
+      background-image: linear-gradient(125deg, #84b1d8 0, #84b1d8 20%, #fff 20%, #fff 40%, #ff7d7c 40%, #ff7d7c 60%, #fff 60%, #fff 80%, #84b1d8 80%, #84b1d8 100%);
+      background: repeating-linear-gradient(
+        -65deg,
+        #84b1d8,
+        #84b1d8 10px,
+        #fff 10px,
+        #fff 20px,
+        #ff7d7c 20px,
+        #ff7d7c 30px,
+        #fff 30px,
+        #fff 40px
+      );
+    }
+  }
+
+  &__close {
+    position: absolute;
+    right: 10px;
+    top: 25px;
+    display: inline-flex;
+    align-items: center;
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+    svg {
+      stroke: #7f7f7f;
+    }
+  }
+
+  &__actions {
+    margin-left: auto;
+  }
+
+  &__user {
+    display: flex;
+  }
+
+  &__ava {
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    border-radius: 3px;
+    &--sm {
+      width: 31px;
+      height: 31px;
+    }
+  }
+  &__info {
+    flex: 1 0 auto;
+    padding-left: 15px;
+  }
+
+  &__name {
+    margin-bottom: 3px;
+    font-size: 24px;
+    font-family: "PT Sans", Arial, sans-serif;
+    font-weight: 700;
+    line-height: 1;
+  }
+  &__city {
+    color: #7f7f7f;
+  }
+
+  &__rating {
+    padding-right: 20px;
+  }
+
+  &__body {
+    padding: 10px 30px;
+    min-width: 100px;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        width: 20px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        min-height: 35px;
+        background-clip: padding-box;
+        background-color: rgba(51,51,51,.5);
+        border: 6px solid transparent;
+        border-radius: 10px
+    }
+  }
+
+  &__list {
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+  }
+
+  &__item {
+    display: flex;
+    padding: 8px 15px;
+    margin-bottom: 20px;
+    border-radius: 3px;
+    animation
+
+    &:nth-child(even) {
+      background-color: #f7f5f7;
+    }
+  }
+
+  &__message {
+    flex: 1;
+    padding-left: 15px;
+    font-size: 14px;
+    padding-right: 15px;
+  }
+  &__date {
+    font-size: 12px;
+    color: #7f7f7f;
+  }
+
+  &__footer {
+    margin-top: auto;
+    padding: 12px 30px 10px;
+    background-color: #e9f2fa;
+  }
+  &__form {
+    flex: 1;
+    padding-left: 15px;
+
+    textarea {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 8px;
+      min-height: 75px;
+      max-height: 135px;
+      font-size: 14px;
+      font-family: inherit;
+      border: 1px solid #b1b6bb;
+      border-radius: 3px;
+      overflow: auto;
+      resize: none;
+    }
+
+    button {
+      padding: 8px 27px;
+      font-family: inherit;
+      font-size: 16px;
+      border: 1px solid #b1b6bb;
+      border-radius: 3px;
+      background-image: linear-gradient( 0, rgb(212,212,216) 0%, rgb(255,255,255) 100%);
+      cursor: pointer;
+    }
+  }
+}
+
+.rating {
+  display: inline-block;
+  direction: rtl;
+
+  &__check {
+    position: absolute;
+    left: -9999px;
+  }
+
+  &__star {
+    display: inline-block;
+    font-size: 0;
+    cursor: pointer;
+
+    &::before {
+      content: "";
+      position: relative;
+      display: block;
+      width: 15px;
+      height: 15px;
+      background-image: url(../img/star.png);
+      background-size: 15px;
+    }
+
+    &:hover::before,
+    &:hover ~ label::before,
+    &--checked::before {
+      background-image: url(../img/star-active.png);
+    }
+  }
+}
