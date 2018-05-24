@@ -135,8 +135,7 @@ body {
     padding: 8px 15px;
     margin-bottom: 20px;
     border-radius: 3px; }
-    animation
-.chatbox__item:nth-child(even) {
+    .chatbox__item--author {
       background-color: #f7f5f7; }
   .chatbox__message {
     -webkit-box-flex: 1;
@@ -201,5 +200,14 @@ body {
     .rating__star:hover::before,
     .rating__star:hover ~ label::before, .rating__star--checked::before {
       background-image: url(../img/star-active.png); }
+
+.list-enter-active, .list-leave-active {
+  -webkit-transition: all 1s linear;
+  transition: all 1s linear;
+  -webkit-transition-delay: 2s;
+          transition-delay: 2s; }
+
+.list-enter, .list-leave-to {
+  background-color: rgba(132, 177, 216, 0.3); }
 
 /*# sourceMappingURL=app.css.map */

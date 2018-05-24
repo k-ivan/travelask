@@ -43,10 +43,12 @@
           </div>
         </div>
         <div class="chatbox__body" ref="body">
-          <ul class="chatbox__list">
-            <li class="chatbox__item" v-for="(comment, idx) in comments" :key="idx">
+          <transition-group name="list" tag="ul" class="chatbox__list">
+            <!-- <ul class="chatbox__list"> -->
+            <li class="chatbox__item" v-for="(comment, idx) in comments" :key="idx" :class="{'chatbox__item--author': comment.author === true}">
               <img class="chatbox__ava chatbox__ava--sm" :src="comment.image">
               <div class="chatbox__message">{{ comment.msg }}</div>
+              <time class="chatbox__date" datetime="">{{ comment.date }}</time>
             </li>
             <!-- <img class="chatbox__ava chatbox__ava--sm" src="http://i.pravatar.cc/50?img=27">
               <div class="chatbox__message">Где взять на прокат вечернее красивое платье? А еще лучше дизайнерское! Предстоит участие в мероприятии, где все гости будут наверняка одеты в наряды "от кутюр", а у меня со средствами туговато, да и жалко на один раз такие деньжищи отваливать. Мне бы салон найти, где на прокат можно такой наряд взять. Поделитесь, пожалуйста, советами.</div>
@@ -69,7 +71,7 @@
               </div>
               <time class="chatbox__date" datetime="">вчера в 17.45</time> -->
             </li>
-          </ul>
+          </transition-group>
         </div>
         <div class="chatbox__footer">
           <div class="chatbox__inline">
@@ -82,7 +84,6 @@
         </div>
       </div>
     </div>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script> -->
     <script src="js/app.js"></script>
   </body>
 </html>
